@@ -1,0 +1,17 @@
+:root {
+  --primary: #21388e;
+  --dark-primary: #111931;
+  --light-primary: #d9e6f8;
+  --button-hover: #9ec2f1;
+  --table-header: #b8d3f6;
+}
+
+.bg-dark-primary {
+  background: var(--dark-primary);
+}
+.bg-primary {
+  background: var(--primary);
+}
+.bg-light-primary {
+  background: var(--light-primary);
+}

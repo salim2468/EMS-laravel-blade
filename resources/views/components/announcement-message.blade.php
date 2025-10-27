@@ -1,0 +1,1 @@
+<p class="text-xs my-2 bg-light-primary rounded p-3 message">{{$message}}</p>

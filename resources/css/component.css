@@ -1,0 +1,115 @@
+
+/* button */
+.btn {
+  padding: 0 1.5rem;
+  height: 38px;
+  max-height: 38px;
+  min-height: 38px;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-primary {
+  background-color:#121c3e !important;
+  color: white;
+}
+.btn-primary:hover {
+  background-color:#424551 !important;
+}
+.btn-secondary {
+  border: 1px solid var(--button-hover);
+}
+.btn-secondary:hover {
+  background: var(--light-primary) !important;
+  color: black;
+  border: 1px solid var(--dark-primary) !important;
+}
+.btn-dark-secondary {
+  border: 1px solid  var(--dark-primary);
+}
+.btn-red {
+  background-color: rgb(231, 156, 156);
+}
+.btn-red:hover {
+  background-color: rgb(234, 177, 177);
+}
+
+/* input */
+input, select {
+  height: 38px !important;
+  padding: 4px !important;
+  border-radius: 0 !important;
+  border: 1px solid black !important;
+}
+input:focus {
+  outline: none !important;
+  border: 1px solid #1e40af !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 0 1px #1e40af !important;
+}
+input[type="radio"]:focus,
+input[type="radio"]:checked,
+input[type="radio"]:active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.input-label {
+  font-size: 12px;
+}
+
+/* table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+table td {
+  padding: 8px 12px;
+  border-top: 1px solid var(--table-header);
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
+  text-align: center;
+}
+table th {
+  padding: 14px 12px;
+  background-color: var(--table-header);
+  border-bottom: 1px solid var(--light-primary);
+  color: black;
+}
+table tr:hover {
+  background: #d0e1f8 !important;
+}
+table th, table td:hover {
+  cursor: pointer !important;
+}
+table tr:nth-child(odd) {
+  background-color: white;
+}
+table tr:nth-child(even) {
+  background-color: white;
+}
+.table-wrapper {
+  overflow-x: scroll;
+  border-radius: 2px;
+}
+
+/* header */
+.header {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .btn {
+    width: 100%;
+  }
+  input {
+    width: 100%;
+  }
+}
