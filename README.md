@@ -75,14 +75,17 @@ DB_PASSWORD=
 ```
 
 ### Broadcast config in .env
+```env
 BROADCAST_DRIVER=pusher
 CACHE_DRIVER=file
 FILESYSTEM_DRIVER=local
 QUEUE_CONNECTION=sync
 SESSION_DRIVER=file
 SESSION_LIFETIME=120
+```
 
-# Email config in .env
+### Email config in .env
+```env
 MAIL_MAILER=smtp
 MAIL_HOST=mailhog
 MAIL_PORT=1025
@@ -91,31 +94,41 @@ MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS=null
 MAIL_FROM_NAME="${APP_NAME}"
+```
 
-# Pusher config in .env (For websocket only)
+### Pusher config in .env (For websocket only)
+```env
 PUSHER_APP_ID=
 PUSHER_APP_KEY=
 PUSHER_APP_SECRET=
 PUSHER_APP_CLUSTER=
+```
 
-
-# Run migration
+#### Run migration
 php artisan migrate
 
-# Run Permission Seeder
+#### Run Permission Seeder
 php artisan db:seed PermissionSeeder
 
-# Run Role Seeder
+#### Run Role Seeder
 php artisan db:seed RoleSeeder
 
-# Run User Seeder
+#### Run User Seeder
 php artisan db:seed UserSeeder
 
-# To run application
+#### To run application
 php artisan serve
 
-# User Credentials
-- Admin: admin1@gmail.com'
+#### User
+- Admin
+- Manager
+- Employee/User
 
-- Manager: manager1@gmail.com'
-- Employee/User: user1@gmail.com'
+#### Credential
+- Check UserSeeder.php file
+
+#### URL
+###### Admin
+- http://127.0.0.1:8000/admin
+###### Client (manager and user)
+- http://127.0.0.1:8000/
