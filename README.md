@@ -64,15 +64,17 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 
-# DB config in .env
+### DB config in .env
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=spatie
 DB_USERNAME=root
 DB_PASSWORD=
+```
 
-# Broadcast config in .env
+### Broadcast config in .env
 BROADCAST_DRIVER=pusher
 CACHE_DRIVER=file
 FILESYSTEM_DRIVER=local
@@ -111,3 +113,9 @@ php artisan db:seed UserSeeder
 
 # To run application
 php artisan serve
+
+# User Credentials
+- Admin: admin1@gmail.com'
+
+- Manager: manager1@gmail.com'
+- Employee/User: user1@gmail.com'
