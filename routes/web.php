@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController\EmployeeController as AdminControllerEmployeeController;
 use App\Http\Controllers\AdminController\LeaveController as AdminControllerLeaveController;
 use App\Http\Controllers\AdminController\PermissionController as AdminControllerPermissionController;
+use App\Http\Controllers\AdminController\ProjectController as AdminControllerProjectController;
 use App\Http\Controllers\AdminController\RoleController as AdminControllerRoleController;
 use App\Http\Controllers\AdminController\WfhController as AdminControllerWfhController;
 use App\Http\Controllers\AnnouncementController;
@@ -112,6 +113,12 @@ Route::middleware(['auth', 'role:manager|admin'])->group(function () {
     Route::post('/leaves/reject/{leaveRequest}', [LeaveController::class, 'rejectLeave'])->name('leaves.reject');
     // TODO leave controller here is of client, since this approve reject and force cancel can be done by only adin role
     Route::post('/leaves/force-cancel/{leaveRequest}', [LeaveController::class, 'forceCancelLeave'])->name('leaves.force-cancel');
+
+    /* project */
+    Route::get('/projects', [AdminControllerProjectController::class, 'index'])->name('admin.projects.index');
+    Route::post('/projects', [AdminControllerProjectController::class, 'store'])->name('admin.projects.store');
+    Route::put('/projects/{project}', [AdminControllerProjectController::class, 'update'])->name('admin.projects.update');
+
 });
 
 Route::get('/chat', function () {
