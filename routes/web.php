@@ -107,10 +107,9 @@ Route::middleware(['auth', 'role:manager'])->group(function () {
 
 // manager & admin
 Route::middleware(['auth', 'role:manager|admin'])->group(function () {
-    Route::post('/leaves/approve/{leaveRequest}', [LeaveController::class, 'approveLeave'])->name('leaves.approve');
-    Route::post('/leaves/reject/{leaveRequest}', [LeaveController::class, 'rejectLeave'])->name('leaves.reject');
-    // TODO leave controller here is of client, since this approve reject and force cancel can be done by only adin role
-    Route::post('/leaves/force-cancel/{leaveRequest}', [LeaveController::class, 'forceCancelLeave'])->name('leaves.force-cancel');
+   Route::post('/leaves/approve/{leaveRequest}', [AdminControllerLeaveController::class, 'approveLeave'])->name('leaves.approve');
+    Route::post('/leaves/reject/{leaveRequest}', [AdminControllerLeaveController::class, 'rejectLeave'])->name('leaves.reject');
+    Route::post('/leaves/force-reject/{leaveRequest}', [AdminControllerLeaveController::class, 'forceRejectLeave'])->name('leaves.force-reject');
 
     /* project */
     Route::get('/projects', [AdminControllerProjectController::class, 'index'])->name('admin.projects.index');
