@@ -82,10 +82,10 @@ class LeaveController extends Controller
         return redirect()->route('user.leaves.request')->with('success', 'Leave sucessfully rejected!');
     }
 
-    // public function forceRejectLeave(LeaveRequest $leaveRequest, LeaveForceRejectLeave $forceRejectLeave): RedirectResponse
-    // {
-    //     $forceRejectLeave->execute($leaveRequest);
+    public function forceRejectLeave(LeaveRequest $leaveRequest, LeaveForceRejectLeave $forceRejectLeave): RedirectResponse
+    {
+        $forceRejectLeave->execute($leaveRequest);
 
-    //     return redirect()->route('user.leaves.request')->with('success', 'Leave has been forced cancelled!');
-    // }
+        return redirect()->route('user.leaves.request')->with('success', 'Leave has been forced cancelled!');
+    }
 }
