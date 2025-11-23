@@ -30,7 +30,7 @@ class ApproveLeave
             if (!$leaveBalance) {
                 throw new \Exception('Leave balance not found.');
             }
-            $leaveBalance->total_days = $leaveBalance->total_days - $leaveRequest->count;
+            $leaveBalance->used_days = $leaveBalance->used_days + $leaveRequest->count;
             $leaveBalance->save();
             DB::commit();
         } catch (Exception $e) {

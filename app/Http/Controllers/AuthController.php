@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\LeaveBalance\GetLeaveBalance;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class AuthController extends Controller
 {
@@ -39,5 +41,21 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/login');
+    }
+
+    //  users and manager dashboard
+    public function dashboard(GetLeaveBalance $leaveBalance): View
+    {
+        $user = auth()->user();
+        $params['user_id'] = $user->id;
+        $leaveCounts = $leaveBalance->execute($params)->with('leaveType')->get();
+
+        return view('client.dashboard', compact('user', 'leaveCounts'));
+    }
+
+    // admin dashboard
+    public function dashboardAdmin(): View
+    {
+        return view('admin.dashboard');
     }
 }

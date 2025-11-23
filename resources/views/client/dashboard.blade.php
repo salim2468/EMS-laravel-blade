@@ -6,10 +6,8 @@
 <div class="flex flex-col">
     <div class="bg-primary px-4 py-5 flex justify-between items-center text-white">
         <div class="flex items-center gap-x-2">
-            <img 
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF02Jj8T2t7PdkytAw42HDuuSz7yXguKn8Lg&s"
-                alt=""
-                class="h-14 w-14 rounded-full">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF02Jj8T2t7PdkytAw42HDuuSz7yXguKn8Lg&s"
+                alt="" class="h-14 w-14 rounded-full">
             <div class="flex flex-col">
                 <p class="text-sm">{{ $user->name }}</p>
                 <p class="text-xs">{{ $user->job_title }}</p>
@@ -17,30 +15,25 @@
         </div>
         <a href="{{ route('user.profile') }}" class="btn btn-secondary">Profile</a>
     </div>
+
     <div class="flex flex-col md:flex-row gap-4 my-4 h-[600px] md:h-[300px]">
         <div class="bg-white p-5 flex-1 overflow-hidden h-[300px]">
             <h3 class="mb-2">Leave Days</h3>
+            @foreach ($leaveCounts as $leave)
             <div class="flex justify-between mb-1">
-                <span class="text-xs">Annual Leave</span>
-                <span class="text-xs">5 of 10 day(s)</span>
+                <span class="text-xs">{{ $leave['leaveType']['name'] ?? 'N/A' }}</span>
+                <span class="text-xs">{{ $leave['used_days'] ?? 0 }} of {{ $leave['total_days'] + $leave['used_days'] ?? 0 }} day(s)</span>
             </div>
             <div class="h-4 bg-gray-300 mb-2">
-                <div class="h-4 bg-dark-primary" style="width: 10%"></div>
+                @php
+                $total = $leave['total_days'] ?? 1;
+                $used = $leave['used_days'] ?? 0;
+                $percentage = ($used / $total) * 100;
+                @endphp
+                <div class="h-4 bg-dark-primary animate-progress" style="--final-width: {{ $percentage }}%; width: 0">
+                </div>
             </div>
-            <div class="flex justify-between mb-1">
-                <span class="text-xs">Annual Leave</span>
-                <span class="text-xs">5 of 10 day(s)</span>
-            </div>
-            <div class="h-4 bg-gray-300 mb-2">
-                <div class="h-4 bg-dark-primary" style="width: 10%"></div>
-            </div>
-            <div class="flex justify-between mb-1">
-                <span class="text-xs">Annual Leave</span>
-                <span class="text-xs">5 of 10 day(s)</span>
-            </div>
-            <div class="h-4 bg-gray-300 mb-2">
-                <div class="h-4 bg-dark-primary" style="width: 10%"></div>
-            </div>
+            @endforeach
         </div>
         <div class="bg-white p-5 flex-1 flex flex-col h-[300px]">
             <h3 class="mb-2">Announcement</h3>
