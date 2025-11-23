@@ -25,7 +25,7 @@ class ForceRejectLeave
         try {
             DB::beginTransaction();
             $leaveBalance = LeaveBalance::where('user_id', $leaveRequest->user_id)->where('leave_type_id', $leaveRequest->leave_type_id)->first();
-            $leaveBalance->total_days = $leaveBalance->total_days + 1;
+            $leaveBalance->used_days = $leaveBalance->used_days - 1;
             $leaveBalance->save();
             $leaveRequest->status = Leave::LEAVE_STATUS_FORCED_REJECTED;
             $leaveRequest->save();
