@@ -14,7 +14,7 @@ class LeaveRequest extends Model
         'start_date',
         'end_date',
         'reason',
-        'status',
+        'status', // ['pending', 'approved', 'rejected', 'forced_rejected']
         'approved_by_id',
         'leave_type_id',
         'count'

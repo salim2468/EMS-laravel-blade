@@ -60,28 +60,6 @@ class LeaveController extends Controller
         }
     }
 
-    public function approveLeave(LeaveRequest $leaveRequest, ApproveLeave $approveLeave): RedirectResponse
-    {
-        $approveLeave->execute($leaveRequest);
-        event(new NotificationBroadcast('Your Leave has been Approved', 2));
-
-        return redirect()->route('user.leaves.request')->with('success', 'Leave successfully approved!');
-    }
-
-    public function rejectLeave(LeaveRequest $leaveRequest, RejectLeave $rejectLeave): RedirectResponse
-    {
-        $rejectLeave->execute($leaveRequest);
-        event(new NotificationBroadcast('Your Leave has been Rejected', 2));
-
-        return redirect()->route('user.leaves.request')->with('success', 'Leave sucessfully rejected!');
-    }
-
-    public function forceCancelLeave(LeaveRequest $leaveRequest): RedirectResponse
-    {
-        
-        return redirect()->route('user.leaves.request')->with('success', 'Leave has been forced cancelled!');
-    }
-
     // user leave report
     public function leaveReport(GetLeaveRequest $getLeaveRequest): View
     {

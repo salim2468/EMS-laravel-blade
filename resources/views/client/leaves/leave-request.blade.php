@@ -60,9 +60,9 @@
             @if($leave->status === 'approved')
             <td>
               <div class="flex gap-x-1 justify-center items-center">
-                <form method="POST" action="{{ route('leaves.force-cancel', $leave->id) }}" onsubmit="return confirm('Are you sure you want to force cancel this already accepted leave ?')">
+                <form method="POST" action="{{ route('leaves.force-reject', $leave->id) }}" onsubmit="return confirm('Are you sure you want to force cancel this already accepted leave ?')">
                   @csrf
-                  <button type="submit" class="btn btn-red">Force Cancel</button>
+                  <button type="submit" class="btn btn-red">Force Reject</button>
                 </form>
               </div>
             </td>

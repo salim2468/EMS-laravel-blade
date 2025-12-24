@@ -12,5 +12,5 @@ class Leave extends Model
     const LEAVE_STATUS_PENDING = 'Pending';
     const LEAVE_STATUS_APPROVED = 'Approved';
     const LEAVE_STATUS_REJECTED = 'Rejected';
-
+    const LEAVE_STATUS_FORCED_REJECTED = 'Forced_Rejected';
 }

@@ -16,8 +16,8 @@ class CreateUser
             $input['profile_img'] = $input['profile_img']->store('profile_images', 'public');
         }
 
-        $validated['password'] = bcrypt('password');
+        $input['password'] = bcrypt('password');
 
-        User::create($validated);
+        User::create($input);
     }
 }
