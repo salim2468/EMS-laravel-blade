@@ -40,11 +40,12 @@ Route::post('/login', [AuthController::class, 'login'])->name('user.login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::get('/admin', function () {
-    return view('admin/dashboard');
-})->middleware(['auth'])->name('admin.dashboard');
 
+// admin routes
 Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
+    // admin dashboard route
+    Route::get('/',  [AuthController::class, 'dashboardAdmin'])->name('admin.dashboard');
+
     Route::get('/employees', [AdminControllerEmployeeController::class, 'index'])->name('admin.employees.index');
     Route::post('/users/{user}/assign-role', [AdminControllerEmployeeController::class, 'assignRole'])->name('admin.employees.assignRole');
     Route::get('/users/create', [AdminControllerEmployeeController::class, 'create'])->name('admin.employees.create');
@@ -72,17 +73,14 @@ Route::middleware(['auth', 'role:admin'])->prefix('/admin')->group(function () {
 
     Route::get('/announcement', [AnnouncementController::class, 'create'])->name('admin.announcement.create');
     Route::post('/announcement', [AnnouncementController::class, 'store'])->name('admin.announcement.store');
-
 });
 
-// Route for other users
-Route::get('/', function () {
-    $user = auth()->user();
-    return view('client.dashboard', compact('user'));
-})->middleware(['auth'])->name('user.dashboard');
 
 // user & manager
 Route::middleware(['auth', 'role:user|manager'])->group(function () {
+    // dashboard
+    Route::get('/', [AuthController::class, 'dashboard'])->name('user.dashboard');
+
     // leave
     Route::get('/leave-employees', [LeaveController::class, 'employeeOnLeave'])->name('user.leave-employees');
     Route::get('/leaves/create', [LeaveController::class, 'create'])->name('user.leaves.create');
